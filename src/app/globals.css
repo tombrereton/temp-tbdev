@@ -27,3 +27,12 @@ body {
         text-wrap: balance;
     }
 }
+
+anti-aliasing {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.backface-visibility {
+    backface-visibility: hidden;
+}
