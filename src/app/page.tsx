@@ -18,22 +18,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full h-full">
-      <div className="flex flex-col text-white text-center p-5 flex-nowrap">
-        <div className="keyboard">
-          <span className="key">T</span>
-          <span className="key">O</span>
-          <span className="key">M</span>
-          <span className="key w-3"></span>
-          <span className="key">B</span>
-          <span className="key">R</span>
-          <span className="key">E</span>
-          <span className="key">R</span>
-          <span className="key">E</span>
-          <span className="key">T</span>
-          <span className="key">O</span>
-          <span className="key">N</span>
-        </div>
+    <div className="w-full h-full flex flex-col">
+      <div
+        id="hero-text"
+        className="flex flex-col flex-grow text-black justify-center items-center"
+      >
+        <h1 className="text-4xl font-bold font-sans">Tom Brereton</h1>
+        <h2 className="text-xl">Software Engineer</h2>
       </div>
       <canvas id="canvas1" className="absolute bottom-0 left-0 w-full"></canvas>
       <div
