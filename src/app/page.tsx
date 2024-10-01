@@ -11,9 +11,14 @@ export default function Home() {
     const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
     const game = new Game(canvas, ctx);
 
-    function animate() {
+    let lastTime = 0;
+    function animate(timeStamp: number) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      game.render();
+
+      const deltaTime = timeStamp - lastTime;
+      lastTime = timeStamp;
+
+      game.render(deltaTime);
       requestAnimationFrame(animate);
     }
     requestAnimationFrame(animate);

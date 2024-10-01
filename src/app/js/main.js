@@ -23,6 +23,9 @@ export default class Game {
     this.message1;
     this.message2;
     this.tileSize = 32;
+    this.eventUpdate = false;
+    this.eventTimer = 0;
+    this.eventInterval = 100;
 
     this.resize(window.innerWidth, window.innerHeight);
 
@@ -48,12 +51,19 @@ export default class Game {
     this.ratio = this.height / this.baseHeight;
 
     this.gravity = 0.15 * this.ratio;
-    this.speed = 0.6 * this.ratio;
+    this.speed = 0.6;
     this.player.resize();
   }
 
-  render() {
+  render(deltaTime) {
     this.player.update();
     this.player.draw();
+    if (this.eventTimer < this.eventInterval) {
+      this.eventTimer += deltaTime;
+      this.eventUpdate = false;
+    } else {
+      this.eventTimer = 0;
+      this.eventUpdate = true;
+    }
   }
 }
