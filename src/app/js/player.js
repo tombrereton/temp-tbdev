@@ -1,19 +1,39 @@
 export default class Player {
-  constructor(game) {
+  constructor(game, sprite) {
     this.game = game;
     this.x = 20;
     this.y;
     this.spriteWidth = 32;
     this.spriteHeight = 32;
-    this.width = 50;
-    this.height = 50;
+    this.width = 0;
+    this.height = 0;
     this.speedY;
     this.flapSpeed;
     this.direction = 1;
+    this.scale = 2;
+    this.sprite = sprite ?? {
+      image: "",
+      x: 0,
+      y: 0,
+      width: this.spriteWidth,
+      height: this.spriteHeight,
+    };
   }
 
   draw() {
+    this.game.ctx.fillStyle = "blue";
     this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.game.ctx.drawImage(
+      this.sprite.image,
+      this.sprite.x,
+      this.sprite.y,
+      this.sprite.width,
+      this.sprite.height,
+      this.x,
+      this.y,
+      this.width,
+      this.height,
+    );
   }
 
   update() {
@@ -43,8 +63,8 @@ export default class Player {
   }
 
   resize() {
-    this.width = this.spriteWidth * this.game.ratio;
-    this.height = this.spriteHeight * this.game.ratio;
+    this.width = this.spriteWidth * this.scale;
+    this.height = this.spriteHeight * this.scale;
     this.y = this.game.height * 0.5 - this.height * 0.5;
     this.speedY = -5 * this.game.ratio;
     this.flapSpeed = 5 * this.game.ratio;

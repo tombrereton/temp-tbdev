@@ -8,7 +8,13 @@ export default class Game {
     this.height = this.canvas.height;
     this.baseHeight = 640;
     this.rate = this.height / this.baseHeight;
-    this.player = new Player(this);
+    this.player = new Player(this, {
+      image: document.getElementById("hero1"),
+      x: 0,
+      y: 0,
+      width: 64,
+      height: 64,
+    });
     this.gravity;
     this.speed;
     this.score;
@@ -16,6 +22,7 @@ export default class Game {
     this.timer;
     this.message1;
     this.message2;
+    this.tileSize = 32;
 
     this.resize(window.innerWidth, window.innerHeight);
 

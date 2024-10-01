@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 import Game from "./js/main.js";
+import Image from "next/image";
+import playerSpriteSheet from "./js/player.png";
 
 export default function Home() {
   useEffect(() => {
@@ -28,6 +30,14 @@ export default function Home() {
         <h2 className="text-3xl">Software Engineer</h2>
       </div>
       <canvas id="canvas1" className="absolute bottom-0 left-0 w-full"></canvas>
+      <img
+        id="hero1"
+        src={playerSpriteSheet.src}
+        alt={"player sprite sheet"}
+        width={832}
+        height={2944}
+        className="hidden"
+      />
       <div
         id="modal"
         className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden"
