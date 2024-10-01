@@ -1,4 +1,5 @@
 import Player from "./player.js";
+import GameObject from "./gameObject.js";
 
 export default class Game {
   constructor(canvas, context) {
@@ -8,6 +9,13 @@ export default class Game {
     this.height = this.canvas.height;
     this.baseHeight = 640;
     this.rate = this.height / this.baseHeight;
+    this.floorTile = new GameObject(this, {
+      image: document.getElementById("tiles1"),
+      x: 0,
+      y: 0,
+      width: 24,
+      height: 24,
+    });
     this.player = new Player(this, {
       image: document.getElementById("hero1"),
       x: 0,
@@ -53,11 +61,13 @@ export default class Game {
     this.gravity = 0.15 * this.ratio;
     this.speed = 0.6;
     this.player.resize();
+    this.floorTile.resize();
   }
 
   render(deltaTime) {
     this.player.update();
     this.player.draw();
+    this.floorTile.draw();
     if (this.eventTimer < this.eventInterval) {
       this.eventTimer += deltaTime;
       this.eventUpdate = false;

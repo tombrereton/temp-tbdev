@@ -2,8 +2,9 @@
 
 import { useEffect } from "react";
 import Game from "./js/main.js";
-import Image from "next/image";
 import playerSpriteSheet from "./js/player.png";
+import tileMap from "./js/tilemap.png";
+import tileMapPacked from "./js/tilemap_packed.png";
 
 export default function Home() {
   useEffect(() => {
@@ -41,6 +42,18 @@ export default function Home() {
         alt={"player sprite sheet"}
         width={832}
         height={2944}
+        className="hidden"
+      />
+      <img
+        id="tiles1"
+        src={tileMap.src}
+        alt={"tile sheet"}
+        className="hidden"
+      />
+      <img
+        id="tiles2"
+        src={tileMapPacked.src}
+        alt={"tile sheet"}
         className="hidden"
       />
       <div
