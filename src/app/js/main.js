@@ -11,7 +11,7 @@ export default class Game {
     this.player = new Player(this, {
       image: document.getElementById("hero1"),
       x: 0,
-      y: 0,
+      y: 11,
       width: 64,
       height: 64,
     });

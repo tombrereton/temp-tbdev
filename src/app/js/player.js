@@ -26,7 +26,7 @@ export default class Player {
     this.game.ctx.drawImage(
       this.sprite.image,
       this.sprite.x,
-      this.sprite.y,
+      this.sprite.y * this.sprite.height,
       this.sprite.width,
       this.sprite.height,
       this.x,
@@ -45,13 +45,23 @@ export default class Player {
     if (this.isTouchingBottom()) {
       this.y = this.game.height - this.height;
     }
-    if (this.x + this.width / 2 > this.game.width) {
+    if (this.isTouchingRight()) {
       this.direction = -1;
+      this.sprite.y = 9;
     }
-    if (this.x + this.width / 2 < 0) {
+    if (this.isTouchingLeft()) {
       this.direction = 1;
+      this.sprite.y = 11;
     }
     this.x += this.direction * this.game.speed;
+  }
+
+  isTouchingLeft() {
+    return this.x + this.width / 2 < 0;
+  }
+
+  isTouchingRight() {
+    return this.x + this.width / 2 > this.game.width;
   }
 
   isTouchingTop() {
